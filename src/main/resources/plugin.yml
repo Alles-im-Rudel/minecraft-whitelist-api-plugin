@@ -1,0 +1,3 @@
+name: 'WhitelistApiFetch'
+version: '1.0.0'
+main: dev.vollborn.WhitelistApiFetchPlugin.WhitelistApiFetchPlugin
