@@ -8,10 +8,7 @@ public class WhitelistApiFetchPlugin extends JavaPlugin {
     public void onEnable() {
         this.checkOrCreateConfig();
 
-        FileConfiguration config = getConfig();
-
-        WhitelistRunnable runnable = new WhitelistRunnable(getConfig());
-        runnable.runTaskTimer(this, 0, 20L * config.getInt("delay"));
+        getServer().getPluginManager().registerEvents(new WhitelistListener(getConfig()), this);
     }
 
     public void checkOrCreateConfig() {
@@ -20,11 +17,6 @@ public class WhitelistApiFetchPlugin extends JavaPlugin {
         String url = config.getString("url");
         if (url == null) {
             config.set("url", "");
-        }
-
-        int delay = config.getInt("delay");
-        if (delay == 0) {
-            config.set("delay", 60);
         }
 
         saveConfig();
